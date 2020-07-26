@@ -1,0 +1,21 @@
+@import "../core/config";
+
+@mixin media-breakpoint-down($breakpoint) {
+  @each $grid-breakpoint in $grid-breakpoints {
+    @if (nth($grid-breakpoint, 1) == $breakpoint) {
+      @media only screen and (max-width: nth($grid-breakpoint, 2)) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin media-breakpoint-up($breakpoint) {
+  @each $grid-breakpoint in $grid-breakpoints {
+    @if (nth($grid-breakpoint, 1) == $breakpoint) {
+      @media only screen and (min-width: nth($grid-breakpoint, 2)) {
+        @content;
+      }
+    }
+  }
+}

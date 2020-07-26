@@ -1,0 +1,183 @@
+.one {
+  &-whole {
+    width: calc(100%);
+  }
+  &-half {
+    width: calc(100%);
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 2 - #{$page-spacing});
+    }
+    &-huge-spacing {
+      @include media-breakpoint-up(md) {
+        margin-left: calc(#{$page-spacing} * 3);
+        width: calc(100% / 2 - 3 * #{$page-spacing});
+      }
+      @include media-breakpoint-up(lg) {
+        width: calc(100% / 2 - 3 * #{$page-spacing});
+      }
+    }
+    &-extra-huge-spacing {
+      width: 100%;
+      /* margin-left: calc(#{$page-spacing} * 12); */
+      @include media-breakpoint-up(lg) {
+        margin-left: calc(#{$page-spacing} * 12);
+        width: calc(100% / 2 - 12 * #{$page-spacing});
+      }
+      /* @include media-breakpoint-up(lg) {
+        width: calc(100% / 3 - 1 * #{$page-spacing});
+      } */
+    }
+  }
+  &-third {
+    width: calc(100%);
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 3 - #{$page-spacing});
+    }
+    &-huge-spacing {
+      @include media-breakpoint-up(md) {
+        margin-left: calc(#{$page-spacing} * 3);
+        width: calc(100% / 2 - 3 * #{$page-spacing});
+      }
+      @include media-breakpoint-up(lg) {
+        /* margin-left: calc(#{$page-spacing} * 3); */
+        width: calc(100% / 3 - 3 * #{$page-spacing});
+      }
+    }
+  }
+  &-fourth {
+    width: calc(100%);
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 5 - #{$page-spacing});
+    }
+  }
+  &-fifth {
+    width: calc(100%);
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 5 - #{$page-spacing});
+    }
+  }
+}
+.two {
+  &-thirds {
+    width: calc(100%);
+    @include media-breakpoint-up(md) {
+      width: calc((100% / 3 - #{$page-spacing}) * 2);
+    }
+  }
+}
+.three {
+  &-fourths {
+    width: calc(100%);
+    @include media-breakpoint-up(md) {
+      width: calc((100% / 4 - #{$page-spacing}) * 3);
+    }
+  }
+}
+.four {
+  &-fifths {
+    width: calc(100%);
+    @include media-breakpoint-up(md) {
+      width: calc((100% / 5 - #{$page-spacing}) * 4);
+    }
+  }
+}
+
+.advanced {
+  &_one_whole {
+    width: 100%;
+    img {
+    width: 100%;
+    }
+  }
+  &_two_thirds {
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 1.5);
+    }
+  }
+  &_one_half {
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 2);
+    }
+  }
+
+  &_one_third {
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 3);
+    }
+  }
+
+  &_one_sixth {
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 6);
+    }
+  }
+  &-flex-start {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  &-centered-quote {
+    width: 100%;
+    margin: auto;
+    font-size: 2em;
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 2);
+    }
+  }
+}
+.advanced_one_whole > .height {
+  &--extra-small {
+    height: 1em;
+  }
+  &--small {
+    height: 2em;
+  }
+  &--medium {
+    height: 4em;
+  }
+  &--large {
+    height: 8em;
+  }
+  &--extra-large {
+    height: 12em;
+  }
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.center-vertical{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.center-child {
+  display: flex;
+  justify-content: center;
+}
+
+.bas-block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.huge-spacing-resetter {
+  width: 100%;
+  margin-left: calc(#{$page-spacing});
+  @include media-breakpoint-up(md) {
+    margin-left: calc(-#{$page-spacing} * 2);
+  }
+}
+.extra-huge-spacing-resetter {
+  margin-left: calc(#{$page-spacing});
+  @include media-breakpoint-up(lg) {
+    width: calc(100% + #{$page-spacing} * 11);
+    margin-left: calc(-#{$page-spacing} * 11);
+  }
+}

@@ -1,0 +1,42 @@
+.zero-mt {
+  margin-top: 0;
+}
+.zero-mb {
+  margin-bottom: 0;
+}
+.prevent-linebreak {
+  white-space: nowrap;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.position-fixed {
+  position: fixed;
+  @include media-breakpoint-up(md) {
+    position: static;
+  }
+}
+.mobile-only {
+  display: block;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+.desktop-only {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}
+
+.align-right{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.auto-hyphens{
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
