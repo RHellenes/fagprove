@@ -1,8 +1,4 @@
-# bas.no-frontend
-
-> Frontend site for bas.no
->
-> Backend site for bas.no can be found [here](https://www.github.com/baskommunikasjon/bas.no-backend)
+# Repo for Fagprøve
 
 ## Build Setup
 
