@@ -27,6 +27,7 @@ jobs:
         uses: vitalyliber/dokku-github-action@master
         env:
           PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           HOST: 167.172.42.27
           PROJECT: frontend
           BRANCH: master
