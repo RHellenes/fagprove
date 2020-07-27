@@ -1,0 +1,32 @@
+name: Deploy Master to Hellenes.dev
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - run: npm install
+      - run: npm run lint
+
+  Deploy:
+    needs: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Deploy
+        uses: vitalyliber/dokku-github-action@master
+        env:
+          PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+          HOST: 167.172.42.27
+          PROJECT: frontend
+          BRANCH: master
