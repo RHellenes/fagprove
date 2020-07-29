@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="wrapper">
     <ChoosePackage />
     <CardAdress />
     <CardContactInfo />
@@ -24,9 +24,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container{
+.wrapper{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding:2em .5em;
 
