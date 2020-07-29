@@ -1,24 +1,13 @@
 :root {
-  --bas-black: 0, 0, 0;
-  --bas-grey: 200, 200, 200;
-  --bas-blue: 18, 38, 170;
-  --bas-cyan: 132, 218, 222;
-  --bas-teal: 69, 194, 177;
-  --bas-yellow: 254, 237, 131;
-  --bas-pink: 227, 29, 147;
-  --bas-salmon: 255, 129, 137;
-  --bas-white: 255, 255, 255;
-
-  --color-foreground: rgba(var(--bas-white), 1);
-  --color-background: rgba(var(--bas-black), 1);
-  --color-foreground-rgb: var(--bas-white);
-  --color-background-rgb: var(--bas-black);
+  --primary-dark: #1d3557;
+  --off-white: #f9f9f9;
+  --primary-contrast: #e63946;
+  --clear-white: #fff;
+  --primary-dark-tint: #99abc3;
 
   --color-form-error: rgb(207, 70, 80);
   --color-form-green: rgb(13, 192, 117);
-  --default-font-size: 16px;
-  --default-line-height: 1.618;
-  --nav-activation-transition: 200ms cubic-bezier(0.57, 0.01, 0.59, 0.99);
+
   --max-page-width-large: 1450px;
   --max-page-width-medium: 1300px;
   --max-page-width: 1200px;
@@ -26,7 +15,10 @@
   --page-gutter: 1.5rem;
   --page-spacing: 1rem;
 }
-
+html {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
 *,
 *:before,
 *:after {
@@ -36,7 +28,8 @@
 }
 body {
   overflow-x: hidden;
-  background-color: #fff;
+  background-color: var(--primary-dark);
+  color: var(--off-white);
 }
 img {
   max-width: 100%;
@@ -50,6 +43,15 @@ textarea,
 input {
   border-radius: 0;
   -webkit-appearance: none;
+}
+
+.narrow_content_container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .container {
@@ -90,33 +92,6 @@ input {
   }
   &--restrict-large {
     max-width: var(--max-page-width-large);
-  }
-  &--protect-text {
-    @media (min-width: 992px) and (max-width: 1205px) {
-      padding-right: 5rem !important;
-    }
-    &-large {
-      @media (min-width: 992px) and (max-width: 1490px) {
-        padding-right: 5rem !important;
-      }
-    }
-  }
-  &--full-height {
-    align-items: center;
-    //min-height: 75vh;
-    margin: 10vh 0;
-    @include media-breakpoint-up(lg) {
-      min-height: 75vh;
-      margin: 0;
-    }
-  }
-  &--column_reverse {
-    -webkit-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    @include media-breakpoint-up(md) {
-      flex-direction: row;
-      justify-content: space-between;
-    }
   }
   &__container {
     display: flex;

@@ -51,7 +51,8 @@ module.exports = {
    */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    'nuxt-webfontloader'
 
   ],
 
@@ -65,6 +66,12 @@ module.exports = {
     // proxyHeaders: false
     proxy: true
   },
+  webfontloader: {
+    google: {
+      families: ['Roboto:400,500,700']
+    }
+  },
+
   /*
    ** Build configuration
    */
