@@ -11,7 +11,7 @@
         </label>
         <label class="label one-third mt-1">
           <span>Postnr</span>
-          <input id="postnumber" required type="text" name="postalcode">
+          <input id="postnumber" required type="tel" name="postalcode">
         </label>
         <div class="label untouchable two-thirds mt-1">
           <span>Poststed</span>
@@ -26,7 +26,7 @@
         </label>
         <label class="label one-third mt-1">
           <span>Postnr</span>
-          <input id="cottage_postnumber" required type="text" name="cottage_postalcode">
+          <input id="cottage_postnumber" required type="tel" name="cottage_postalcode">
         </label>
         <div class="label untouchable two-thirds mt-1">
           <span>Poststed</span>
@@ -34,7 +34,7 @@
             Treungen
           </div>
         </div>
-        <label class="label one-whole mt-1">
+        <label class="label one-whole mt-105">
           <span>Hyttefelt (om du ikke vet adressen)</span>
           <input id="cottage_adress" required type="text" name="cottage_area">
         </label>
