@@ -52,13 +52,13 @@ export default {
     &.increase-size{
       @media (min-width: 900px) {
         transform: scale(1.05);
-
       }
 
     }
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     background: #fff;
     border: solid 2px var(--primary-dark);
@@ -98,6 +98,10 @@ export default {
       padding:0;
       list-style-type:none;
     }
+  }
+  & .cta{
+    position: absolute;
+    bottom:1.5em;
   }
 }
 </style>
