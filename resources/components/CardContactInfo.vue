@@ -25,7 +25,7 @@
         </label>
       </div>
       <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
-        <input type="submit" value="Fyll ut kontaktinformasjon" class="button button--primary">
+        <input type="submit" value="Se over bestillingen" class="button button--primary">
       </div>
     </form>
   </div>

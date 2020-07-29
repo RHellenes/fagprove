@@ -2,16 +2,19 @@
   <div class="container">
     <CardAdress />
     <CardContactInfo />
+    <CardConfirm />
   </div>
 </template>
 
 <script>
 import CardAdress from '@/components/CardAdress';
 import CardContactInfo from '@/components/CardContactInfo';
+import CardConfirm from '@/components/CardConfirm';
 export default {
   name: 'Index',
   components: {
     CardAdress,
+    CardConfirm,
     CardContactInfo
   }
 };

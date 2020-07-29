@@ -29,3 +29,48 @@
     border: 2px solid var(--primary-dark);
   }
 }
+
+input[type="checkbox"] {
+  opacity: 0;
+  height: 1px;
+  margin-bottom: -1px;
+  display: none;
+  & + span {
+    & a,
+    & a:visited {
+      color: var(--primary-dark);
+    }
+    padding-left: 1.7em;
+    position: relative;
+    display: block;
+    width: auto;
+
+    &::before {
+      content: "";
+      width: 1.15em;
+      height: 1.1em;
+      background: #fff;
+      border: solid 2px var(--primary-dark);
+      border-radius: 2px;
+
+      position: absolute;
+      left: 0;
+    }
+  }
+  &:checked + span {
+    &::before {
+      background: var(--primary-dark);
+    }
+    &::after {
+      content: "";
+      width: 0.45em;
+      height: 0.75em;
+      border-bottom: 2px solid #fff;
+      border-right: 2px solid #fff;
+      position: absolute;
+      left: 0.38em;
+      bottom: 5px;
+      transform: rotate(35deg);
+    }
+  }
+}
