@@ -1,12 +1,12 @@
 <template>
   <nav :class="{is_Nav_Open:isNavActive}" class="nav">
-    <nuxt-link to="/blogg" class="nav__link">
+    <nuxt-link to="/" class="nav__link">
       Om oss
     </nuxt-link>
-    <nuxt-link to="/faq" class="nav__link">
+    <nuxt-link to="/" class="nav__link">
       Kontakt oss
     </nuxt-link>
-    <nuxt-link to="/kontakt" class="nav__link">
+    <nuxt-link to="/" class="nav__link">
       Driftstatus
     </nuxt-link>
     <nuxt-link to="/" class="button button--contrast button--compact">
