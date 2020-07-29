@@ -1,42 +1,27 @@
 <template>
-  <div class="order-process container">
+  <div class="order-process container mt-2">
     <h1 class="thin">
-      Adresse
+      Kontaktinformasjon
     </h1>
     <form class="four-fifths">
+      <div class="one-whole flex-block ">
+        <label class="label one-half mt-105">
+          <span>Fornavn</span>
+          <input id="firstname" required type="text" name="firstname">
+        </label>
+        <label class="label one-half mt-105">
+          <span>Etternavn</span>
+          <input id="surname" required type="text" name="surname">
+        </label>
+      </div>
       <div class="one-half flex-block ">
-        <label class="label one-whole mt-1">
-          <span>Fakturaadresse</span>
-          <input id="billing_adress" required type="text" name="billing_adress">
+        <label class="label one-whole mt-105">
+          <span>Email</span>
+          <input id="email" required type="text" name="email">
         </label>
-        <label class="label one-third mt-1">
-          <span>Postnr</span>
-          <input id="postnumber" required type="text" name="postalcode">
-        </label>
-        <div class="label untouchable two-thirds mt-1">
-          <span>Poststed</span>
-          <div class="untouchable">
-            Oslo
-          </div>
-        </div>
-
-        <label class="label one-whole mt-4">
-          <span>Adressa til hytta</span>
-          <input id="cottage_adress" required type="text" name="cottage_adress">
-        </label>
-        <label class="label one-third mt-1">
-          <span>Postnr</span>
-          <input id="cottage_postnumber" required type="text" name="cottage_postalcode">
-        </label>
-        <div class="label untouchable two-thirds mt-1">
-          <span>Poststed</span>
-          <div class="untouchable">
-            Treungen
-          </div>
-        </div>
-        <label class="label one-whole mt-1">
-          <span>Hyttefelt (om du ikke vet adressen)</span>
-          <input id="cottage_adress" required type="text" name="cottage_area">
+        <label class="label one-whole mt-105">
+          <span>Mobilnummer</span>
+          <input id="phonenumber" required type="tel" name="phonenumber">
         </label>
       </div>
       <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
