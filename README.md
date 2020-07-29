@@ -1,5 +1,7 @@
 # Repo for Fagprøve
 
+![Deploy Master to Hellenes.dev](https://github.com/RHellenes/fagprove/workflows/Deploy%20Master%20to%20Hellenes.dev/badge.svg?branch=master)
+
 ## Build Setup
 
 ```bash
