@@ -86,7 +86,7 @@
   &_one_whole {
     width: 100%;
     img {
-    width: 100%;
+      width: 100%;
     }
   }
   &_two_thirds {
@@ -120,14 +120,6 @@
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-  &-centered-quote {
-    width: 100%;
-    margin: auto;
-    font-size: 2em;
-    @include media-breakpoint-up(md) {
-      width: calc(100% / 2);
-    }
-  }
 }
 .advanced_one_whole > .height {
   &--extra-small {
@@ -151,7 +143,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.center-vertical{
+.center-vertical {
   margin-top: auto;
   margin-bottom: auto;
 }

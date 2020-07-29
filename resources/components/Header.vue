@@ -60,9 +60,10 @@ header{
 }
 
 .logo{
+  display: block;
   width: 15%;
   min-width: 8em;
-  max-width: 11em;
+  max-width: 9em;
   align-self:center;
   position: relative;
   & img{

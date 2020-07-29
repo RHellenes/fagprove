@@ -67,6 +67,11 @@ export default {
       margin-bottom:1em;
 
     @media screen and (min-width:900px){
+      &:first-of-type{
+        margin-top:0;
+
+      }
+      margin:0;
       width: auto;
       margin-right:2em;
     }
