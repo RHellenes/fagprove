@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <ChoosePackage />
     <CardAdress />
     <CardContactInfo />
     <CardConfirm />
@@ -8,11 +9,13 @@
 
 <script>
 import CardAdress from '@/components/CardAdress';
+import ChoosePackage from '@/components/ChoosePackage';
 import CardContactInfo from '@/components/CardContactInfo';
 import CardConfirm from '@/components/CardConfirm';
 export default {
   name: 'Index',
   components: {
+    ChoosePackage,
     CardAdress,
     CardConfirm,
     CardContactInfo

@@ -1,11 +1,11 @@
 <template>
   <div class="offer">
-    <div class="container">
+    <div :class="[content.isCtaActive ? 'min-height' : '', content.isHighlighted && content.isCtaActive ? 'increase-size' : '' ]" class="container">
       <div class="header">
         <h3 class="mb-05 mt-05">
-          Sølv
+          {{ content.title }}
         </h3>
-        <h4>659,- per mnd</h4>
+        <h4>{{ content.price }},- per mnd</h4>
         <h6 class="tint mt-05">
           Etablering kan tilkomme
         </h6>
@@ -17,7 +17,7 @@
       </div>
       <div v-if="content.isCtaActive" class="cta center-child one-whole mt-2">
         <nuxt-link :class="content.isHighlighted ? 'button--contrast mt-1' : 'button--primary ' " to="/" class="button button-compressed ">
-          Velg sølv
+          Velg {{ content.title.toLowerCase() }}
         </nuxt-link>
       </div>
     </div>
@@ -39,13 +39,26 @@ export default {
 
 <style lang="scss" scoped>
 .offer {
+
   position: relative;
   width: 100%;
   color: var(--primary-dark);
   text-align:center;
-
+  max-width:20em;
   & .container{
+    &.min-height{
+      min-height:455px;
+    }
+    &.increase-size{
+      @media (min-width: 900px) {
+        transform: scale(1.05);
 
+      }
+
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     background: #fff;
     border: solid 2px var(--primary-dark);
@@ -80,6 +93,7 @@ export default {
     }
   }
   .content{
+    justify-self: flex-start;
     ul{
       padding:0;
       list-style-type:none;

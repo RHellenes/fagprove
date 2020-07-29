@@ -1,5 +1,5 @@
 <template>
-  <div class="order-process container">
+  <div class="order-process container mt-3">
     <h1 class="thin">
       Adresse
     </h1>
