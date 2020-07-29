@@ -152,7 +152,7 @@
   justify-content: center;
 }
 
-.bas-block {
+.flex-block {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -171,5 +171,18 @@
   @include media-breakpoint-up(lg) {
     width: calc(100% + #{$page-spacing} * 11);
     margin-left: calc(-#{$page-spacing} * 11);
+  }
+}
+
+.order-process.container {
+  width: 100%;
+  max-width: 925px;
+  background: var(--off-white);
+  padding: 1em 2em;
+  color: var(--primary-dark);
+  border-radius: 3px;
+
+  @media (min-width: 900px) {
+    padding: 1em 2em;
   }
 }

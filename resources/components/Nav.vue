@@ -9,7 +9,7 @@
     <nuxt-link to="/kontakt" class="nav__link">
       Driftstatus
     </nuxt-link>
-    <nuxt-link to="/" class="button button--contrast">
+    <nuxt-link to="/" class="button button--contrast button--compact">
       Bestill
     </nuxt-link>
   </nav>
