@@ -4,7 +4,7 @@ export const state = () => ({
       title: 'Gull',
       price: '999',
       benefits: [
-        'Internett <strong>500mps</strong> opp og ned',
+        'Internett <strong>700mps</strong> opp og ned',
         '70 kanaler',
         'Programarkiv',
         '500 timer opptak',
