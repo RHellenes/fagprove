@@ -1,9 +1,23 @@
 <template>
-  <div class="order-process container mt-2">
+  <div
+    :tabindex="!open && hasRegistred ? '0' : ''"
+    v-on:click="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
+    v-on:keydown.enter="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
+    class="order-process container mt-2"
+  >
     <h1 class="thin">
       Kontaktinformasjon
     </h1>
-    <form @submit.prevent="updateContactInfo()" class="four-fifths">
+    <p v-if="!open">
+      {{ registredContactInfo.firstname }} {{ registredContactInfo.surname }}
+    </p>
+    <p v-if="!open">
+      {{ registredContactInfo.email }}
+    </p>
+    <p v-if="!open">
+      {{ registredContactInfo.phonenumber }}
+    </p>
+    <form @submit.prevent="updateContactInfo()" v-if="open" class="four-fifths">
       <div class="one-whole flex-block ">
         <label class="label order-process_adress_one-half mt-105">
           <span>Fornavn</span>
@@ -34,6 +48,16 @@
 <script>
 export default {
   name: 'ContactInfo',
+  props: {
+    open: {
+      required: true,
+      type: Boolean
+    },
+    pageNr: {
+      required: true,
+      type: Number
+    }
+  },
   data () {
     return {
       contactInfo: {
@@ -45,9 +69,21 @@ export default {
       }
     };
   },
+  computed: {
+    hasRegistred () {
+      return this.$store.state.cart.cart.contact.meta.hasRegistred;
+    },
+    registredContactInfo () {
+      return this.$store.state.cart.cart.contact.data;
+    }
+  },
   methods: {
     updateContactInfo () {
       this.$store.commit('cart/updateContact', this.contactInfo);
+      this.$store.commit('progress/increasePageNr');
+    },
+    setPageNrIfNotOpen () {
+      this.$store.commit('progress/setPageNr', this.pageNr);
     }
   }
 };

@@ -1,9 +1,11 @@
 <template>
-  <div class="order-process container mt-2">
+  <div
+    class="order-process container mt-2"
+  >
     <h1 class="thin">
       Bekreft bestilling
     </h1>
-    <div class="four-fifths flex-block mt-2 mb-2">
+    <div v-if="open" class="four-fifths flex-block mt-2 mb-2">
       <div class="one-half summary ">
         <div class="one-whole">
           <h3>Kontaktinfo</h3>
@@ -37,7 +39,7 @@
         </label>
       </div>
       <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
-        <input type="submit" value="Bestill" class="button button--contrast">
+        <input @click.prevent type="submit" value="Bestill" class="button button--contrast">
       </div>
     </div>
   </div>
@@ -50,10 +52,21 @@ export default {
   components: {
     CardOffer
   },
+  props: {
+    open: {
+      required: true,
+      type: Boolean
+    },
+    pageNr: {
+      required: true,
+      type: Number
+    }
+  },
   computed: {
     offers () {
       return this.$store.state.cart;
     }
+
   }
 
 };

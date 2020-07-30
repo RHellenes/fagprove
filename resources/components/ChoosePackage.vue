@@ -1,9 +1,15 @@
 <template>
-  <div class=" choose-package">
-    <h1 class="center">
+  <div
+    :tabindex="!open && hasRegistred ? '0' : ''"
+    @click="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
+    @keydown.enter="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
+    :class="!open ? 'order-process container' : 'choose-package mb-6'"
+  >
+    <h1 class="center thin">
       Velg pakke
     </h1>
-    <div class="mt-3 choose-package_container">
+    <span v-if="!open" class="center">{{ chosenPackage }}</span>
+    <div v-if="open" class="mt-3 choose-package_container">
       <div
         :key="index"
         v-for="(offer, index) in offers"
@@ -26,10 +32,33 @@ export default {
   components: {
     CardOffer
   },
+  props: {
+    open: {
+      required: true,
+      type: Boolean
+    },
+    pageNr: {
+      required: true,
+      type: Number
+    }
+  },
   computed: {
     offers () {
       return this.$store.state.offers.offers;
+    },
+    hasRegistred () {
+      return this.$store.state.cart.cart.package.meta.hasRegistred;
+    },
+    chosenPackage () {
+      return this.$store.state.cart.cart.package.data.title ? this.$store.state.cart.cart.package.data.title : null;
     }
+
+  },
+  methods: {
+    setPageNrIfNotOpen () {
+      this.$store.commit('progress/setPageNr', this.pageNr);
+    }
+
   }
 
 };
@@ -44,8 +73,8 @@ export default {
   flex-wrap: wrap;
 
   h1{
-    font-size: 2.5rem;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 400;
     position: relative;
 
     &:after{

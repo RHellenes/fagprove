@@ -15,11 +15,9 @@
           <li v-for="(benefit, index ) in content.benefits" :key="index" v-html="benefit" class="mb-1" />
         </ul>
       </div>
-      <div v-if="isCtaActive" class="cta center-child one-whole mt-2">
-        <button @click="addPackage()" :class="content.isHighlighted ? 'button--contrast mt-1' : 'button--primary ' " class="button button-compressed ">
-          Velg {{ content.title.toLowerCase() }}
-        </button>
-      </div>
+      <form v-if="isCtaActive" @submit.prevent="addPackage()" class="cta center-child one-whole mt-2">
+        <input :class="content.isHighlighted ? 'button--contrast mt-1' : 'button--primary ' " :value="`Velg ${content.title.toLowerCase()}`" type="submit" class="button button-compressed ">
+      </form>
     </div>
   </div>
 </template>
@@ -38,10 +36,12 @@ export default {
       type: Boolean,
       default: false
     }
+
   },
   methods: {
     addPackage () {
       this.$store.commit('cart/updatePackage', this.content);
+      this.$store.commit('progress/increasePageNr');
     }
   }
 };

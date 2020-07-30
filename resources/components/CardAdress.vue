@@ -1,9 +1,15 @@
 <template>
-  <div class="order-process container mt-3">
+  <div
+    :tabindex="!open && hasRegistred ? '0' : ''"
+    @click="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
+    @keydown.enter="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
+    class="order-process container mt-2"
+  >
     <h1 class="thin">
       Adresse
     </h1>
-    <form @submit.prevent="updateAdress()" class="four-fifths">
+    <span v-if="!open" class="center">{{ `${registredAdress.cottage.adress}, ${registredAdress.cottage.postalCode} ${registredAdress.cottage.postalArea}` }} </span>
+    <form @submit.prevent="updateAdress()" v-if="open" class="four-fifths">
       <div class="order-process_adress_one-half flex-block ">
         <label class="label one-whole mt-1">
           <span>Fakturaadresse</span>
@@ -54,7 +60,7 @@
         </div>
         <label class="label one-whole mt-105">
           <span>Hyttefelt (om du ikke vet adressen)</span>
-          <input id="cottage_extra" v-model="cottage_extra" required type="text" name="cottage_extra">
+          <input id="cottage_extra" v-model="cottage_extra" type="text" name="cottage_extra">
         </label>
       </div>
       <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
@@ -67,6 +73,16 @@
 <script>
 export default {
   name: 'CardAdress',
+  props: {
+    open: {
+      required: true,
+      type: Boolean
+    },
+    pageNr: {
+      required: true,
+      type: Number
+    }
+  },
   data () {
     return {
       postalcodes: [],
@@ -82,6 +98,14 @@ export default {
       isCottagePostalCodeOk: true
     };
   },
+  computed: {
+    hasRegistred () {
+      return this.$store.state.cart.cart.adress.meta.hasRegistred;
+    },
+    registredAdress () {
+      return this.$store.state.cart.cart.adress.data;
+    }
+  },
   watch: {
     billing_postalcode (newVal, oldVal) {
       this.validatePostalCode(newVal, 'billing');
@@ -94,6 +118,9 @@ export default {
     this.fetchposts();
   },
   methods: {
+    setPageNrIfNotOpen () {
+      this.$store.commit('progress/setPageNr', this.pageNr);
+    },
     async fetchposts () {
       try {
         const data = await this.$axios.$get('/postal-codes/postalcodes.json');
@@ -136,6 +163,7 @@ export default {
         }
       }
     },
+
     updateAdress () {
       const obj = {
         billing: {
@@ -151,7 +179,9 @@ export default {
         }
       };
       this.$store.commit('cart/updateAdress', obj);
+      this.$store.commit('progress/increasePageNr');
     }
+
   }
 
 };

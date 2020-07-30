@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <ChoosePackage />
-    <CardAdress />
-    <CardContactInfo />
-    <CardConfirm />
+    <ChoosePackage :open="pageNr === 0" :pageNr="0" />
+    <CardAdress :open="pageNr === 1" :pageNr="1" />
+    <CardContactInfo :open="pageNr === 2" :pageNr="2" />
+    <CardConfirm :open="pageNr === 3" :pageNr="3" />
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
     CardAdress,
     CardConfirm,
     CardContactInfo
+  },
+  computed: {
+    pageNr () {
+      return this.$store.state.progress.pageNr;
+    }
   }
 };
 </script>
