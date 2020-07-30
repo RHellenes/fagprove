@@ -3,7 +3,7 @@
     <h1 class="center">
       Velg pakke
     </h1>
-    <div class="mt-3 container">
+    <div class="mt-3 choose-package_container">
       <div
         :key="index"
         v-for="(offer, index) in offers"
@@ -58,22 +58,27 @@ export default {
       left:50%;
     }
   }
-  & .container{
+  &_container{
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items:center;
     flex-wrap: wrap;
+    flex-direction: column;
 
     @media (min-width: 900px) {
+      flex-direction: row;
       flex-wrap: nowrap;
 
     }
     & .card-wrap{
+      width:90%;
       display: flex;
       justify-content: center;
+      @media (min-width: 900px) {
+        width:33%;
 
-      width: 100%;
+      }
 
     }
   }
