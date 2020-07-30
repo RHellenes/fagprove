@@ -6,6 +6,11 @@
   text-decoration: none;
   border: 0px;
 
+  &:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
+
   &--primary {
     color: var(--off-white);
     background-color: var(--primary-dark);

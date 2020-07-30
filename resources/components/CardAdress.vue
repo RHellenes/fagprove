@@ -56,17 +56,20 @@
         </label>
         <div class="label untouchable form_two-thirds mt-1">
           <span>Poststed</span>
-          <div class="untouchable">
+          <div :class="isCottagePostalCodeOk === '0' ? 'red_border' : ''" class="untouchable">
             {{ cottage_municipality }}
           </div>
         </div>
+        <p v-if="isCottagePostalCodeOk === '0'" class="mt-05">
+          Oj! Hytta di er vist ikke i Vestfold eller Telemark!
+        </p>
         <label class="label one-whole mt-105">
           <span>Hyttefelt (om du ikke vet adressen)</span>
           <input id="cottage_extra" v-model="cottage_extra" type="text" name="cottage_extra">
         </label>
       </div>
       <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
-        <input type="submit" value="Fyll ut kontaktinformasjon" class="button button--primary">
+        <input :disabled="!isFormFilled" type="submit" value="Fyll ut kontaktinformasjon" class="button button--primary">
       </div>
     </form>
   </div>
@@ -97,7 +100,9 @@ export default {
       cottage_postalcode: '',
       cottage_municipality: '',
       cottage_extra: '',
-      isCottagePostalCodeOk: true
+      isCottagePostalCodeOk: true,
+
+      isFormFilled: false
     };
   },
   computed: {
@@ -110,16 +115,43 @@ export default {
   },
   watch: {
     billing_postalcode (newVal, oldVal) {
+      this.checkIfFormIsFilled();
       this.validatePostalCode(newVal, 'billing');
     },
     cottage_postalcode (newVal, oldVal) {
+      this.checkIfFormIsFilled();
       this.validatePostalCode(newVal, 'cottage');
+    },
+    billing_adress (newVal, oldVal) {
+      this.checkIfFormIsFilled();
+    },
+    billing_municipality (newVal, oldVal) {
+      this.checkIfFormIsFilled();
+    },
+    cottage_adress (newVal, oldVal) {
+      this.checkIfFormIsFilled();
+    },
+    cottage_municipality (newVal, oldVal) {
+      this.checkIfFormIsFilled();
     }
   },
   mounted () {
     this.fetchposts();
   },
   methods: {
+    checkIfFormIsFilled () {
+      if (this.billing_adress.length &&
+        this.billing_postalcode.length &&
+          this.billing_municipality.length &&
+            this.cottage_adress.length &&
+              this.cottage_postalcode.length &&
+                this.cottage_municipality.length &&
+                  this.isCottagePostalCodeOk === '2') {
+        this.isFormFilled = true;
+      } else {
+        this.isFormFilled = false;
+      }
+    },
     setPageNrIfNotOpen () {
       this.$store.commit('progress/setPageNr', this.pageNr);
     },
@@ -132,12 +164,12 @@ export default {
     },
     validatePostalCode (code, where) {
       // if ('([0-9]{0-3})'.test(code)) {
-      if (code.length) {
+      if (code.toString().length < 4 || !code) {
         // Reset
         switch (where) {
           case 'cottage':
             this.cottage_municipality = '';
-            this.isCottagePostalCodeOk = '';
+            this.isCottagePostalCodeOk = '1';
 
             break;
 
@@ -155,8 +187,7 @@ export default {
         switch (where) {
           case 'cottage':
             this.cottage_municipality = postalInfo.municipality;
-            this.isCottagePostalCodeOk = !!regex.test(postalInfo.countyCode);
-
+            this.isCottagePostalCodeOk = regex.test(postalInfo.countyCode) ? '2' : '0';
             break;
 
           default:
@@ -165,7 +196,6 @@ export default {
         }
       }
     },
-
     updateAdress () {
       const obj = {
         billing: {
@@ -180,11 +210,13 @@ export default {
           extraInfo: this.cottage_extra
         }
       };
-      this.$store.commit('cart/updateAdress', obj);
-      this.$store.commit('progress/increasePageNr');
+      if (this.isCottagePostalCodeOk === '2') {
+        this.$store.commit('cart/updateAdress', obj);
+        this.$store.commit('progress/increasePageNr');
 
-      this.$router.push('/#adress');
-      this.$router.push('/#contact');
+        this.$router.push('/#adress');
+        this.$router.push('/#contact');
+      }
     }
 
   }
@@ -209,6 +241,11 @@ export default {
   position: absolute;
   height: 1px;
   top:-70px;
+}
+.red_border{
+  border-bottom: 3px solid var(--primary-contrast) !important;
+  border-right: 0px;
+  border-left: 0px;
 }
 
 </style>
