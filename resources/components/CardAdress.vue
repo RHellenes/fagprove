@@ -60,7 +60,8 @@ export default {
       cottage_adress: '',
       cottage_postalcode: '',
       cottage_municipality: '',
-      cottage_extra: ''
+      cottage_extra: '',
+      isCottagePostalCodeOk: true
     };
   },
   watch: {
@@ -68,7 +69,7 @@ export default {
       this.validatePostalCode(newVal, 'billing');
     },
     cottage_postalcode (newVal, oldVal) {
-      this.validatePostalCode(newVal, 'cottage', true);
+      this.validatePostalCode(newVal, 'cottage');
     }
   },
   mounted () {
@@ -82,12 +83,31 @@ export default {
         this.postalcodes = data;
       } catch (e) { }
     },
-    validatePostalCode (code, where, strict) {
+    validatePostalCode (code, where) {
+      // if ('([0-9]{0-3})'.test(code)) {
+      if (code.length) {
+        // Reset
+        switch (where) {
+          case 'cottage':
+            this.cottage_municipality = '';
+            this.isCottagePostalCodeOk = '';
+
+            break;
+
+          default:
+            this.billing_municipality = '';
+            break;
+        }
+      }
       const postalInfo = this._.find(this.postalcodes, { 'municipalityCode': code });
+      const regex = RegExp('^(38)([0-9]{2})$');
+
       if (postalInfo) {
         switch (where) {
           case 'cottage':
             this.cottage_municipality = postalInfo.municipality;
+            this.isCottagePostalCodeOk = !!regex.test(postalInfo.countyCode);
+
             break;
 
           default:
@@ -95,6 +115,9 @@ export default {
             break;
         }
       }
+    },
+    isPostalCodeInSupportedArea (countyCode) {
+
     }
   }
 
