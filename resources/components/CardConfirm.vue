@@ -7,39 +7,27 @@
       <div class="one-half summary ">
         <div class="one-whole">
           <h3>Kontaktinfo</h3>
-          <p> Fornavn Etternavn </p>
-          <p> epost@adresse.com </p>
-          <p> 993 63 892 </p>
+          <p>{{ offers.cart.contact.data.firstname }} {{ offers.cart.contact.data.surname }}</p>
+          <p> {{ offers.cart.contact.data.email }}</p>
+          <p> {{ offers.cart.contact.data.phone }}</p>
         </div>
 
         <div class="one-whole mt-2">
           <h3>Fakturaadresse</h3>
-          <p>Adresse  </p>
-          <p>Postkode STED</p>
+          <p>{{ offers.cart.adress.data.billing.adress }}</p>
+          <p>{{ offers.cart.adress.data.billing.postalCode }} {{ offers.cart.adress.data.billing.postalArea }}</p>
         </div>
         <div class="one-whole mt-2">
           <h3>Hytteadresse</h3>
-          <p>Adresse  </p>
-          <p>Postkode STED</p>
+          <p>{{ offers.cart.adress.data.cottage.adress }}</p>
+          <p>{{ offers.cart.adress.data.cottage.postalCode }} {{ offers.cart.adress.data.cottage.postalArea }}</p>
+          <p>{{ offers.cart.adress.data.cottage.extraInfo }}</p>
         </div>
       </div>
 
-      <div class="one-half flex-block ">
+      <div v-if="offers.cart.package.data" class="one-half flex-block">
         <CardOffer
-          :content="{
-            title: 'Sølv',
-            price: '659',
-            benefits: [
-              'Internett <strong>500mps</strong> opp og ned',
-              'Standard TV-pakke',
-              'Programarkiv',
-              '500 timer opptak',
-              '<strong>Viaplay inkludert</strong>'
-            ],
-            isCtaActive: false,
-            isHighlighted: true
-
-          }"
+          :content="offers.cart.package.data"
         />
       </div>
       <div class="one-whole mt-3 mb-1 f-size-1-1">
@@ -61,6 +49,11 @@ export default {
   name: 'CardConfirm',
   components: {
     CardOffer
+  },
+  computed: {
+    offers () {
+      return this.$store.state.cart;
+    }
   }
 
 };

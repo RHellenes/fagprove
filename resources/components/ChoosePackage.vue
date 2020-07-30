@@ -12,6 +12,7 @@
       >
         <CardOffer
           :content="offer"
+          :is-cta-active="true"
         />
       </div>
     </div>

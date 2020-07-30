@@ -1,6 +1,6 @@
 <template>
   <div class="offer">
-    <div :class="[content.isCtaActive ? 'min-height' : '', content.isHighlighted && content.isCtaActive ? 'increase-size' : '' ]" class="container">
+    <div :class="[isCtaActive ? 'min-height' : '', content.isHighlighted && isCtaActive ? 'increase-size' : '' ]" class="container">
       <div class="header">
         <h3 class="mb-05 mt-05">
           {{ content.title }}
@@ -10,15 +10,15 @@
           Etablering kan tilkomme
         </h6>
       </div>
-      <div :class="content.isCtaActive ? '' : 'mb-1' " class="content mt-2">
+      <div :class="isCtaActive ? '' : 'mb-1' " class="content mt-2">
         <ul v-if="content">
           <li v-for="(benefit, index ) in content.benefits" :key="index" v-html="benefit" class="mb-1" />
         </ul>
       </div>
-      <div v-if="content.isCtaActive" class="cta center-child one-whole mt-2">
-        <nuxt-link :class="content.isHighlighted ? 'button--contrast mt-1' : 'button--primary ' " to="/" class="button button-compressed ">
+      <div v-if="isCtaActive" class="cta center-child one-whole mt-2">
+        <button @click="addPackage()" :class="content.isHighlighted ? 'button--contrast mt-1' : 'button--primary ' " class="button button-compressed ">
           Velg {{ content.title.toLowerCase() }}
-        </nuxt-link>
+        </button>
       </div>
     </div>
   </div>
@@ -32,6 +32,16 @@ export default {
       required: true,
       type: Object
 
+    },
+    isCtaActive: {
+      required: false,
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    addPackage () {
+      this.$store.commit('cart/updatePackage', this.content);
     }
   }
 };

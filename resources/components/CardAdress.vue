@@ -3,11 +3,11 @@
     <h1 class="thin">
       Adresse
     </h1>
-    <form class="four-fifths">
+    <form @submit.prevent="updateAdress()" class="four-fifths">
       <div class="order-process_adress_one-half flex-block ">
         <label class="label one-whole mt-1">
           <span>Fakturaadresse</span>
-          <input id="billing_adress" required type="text" name="billing_adress">
+          <input id="billing_adress" v-model="billing_adress" required type="text" name="billing_adress">
         </label>
         <label class="label form_one-third mt-1">
           <span>Postnr</span>
@@ -31,7 +31,7 @@
 
         <label class="label one-whole mt-4">
           <span>Adressa til hytta</span>
-          <input id="cottage_adress" required type="text" name="cottage_adress">
+          <input id="cottage_adress" v-model="cottage_adress" required type="text" name="cottage_adress">
         </label>
         <label class="label form_one-third mt-1">
           <span>Postnr</span>
@@ -54,7 +54,7 @@
         </div>
         <label class="label one-whole mt-105">
           <span>Hyttefelt (om du ikke vet adressen)</span>
-          <input id="cottage_area" required type="text" name="cottage_area">
+          <input id="cottage_extra" v-model="cottage_extra" required type="text" name="cottage_extra">
         </label>
       </div>
       <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
@@ -117,6 +117,7 @@ export default {
             break;
         }
       }
+
       const postalInfo = this._.find(this.postalcodes, { 'municipalityCode': code });
       // VESTFOLD OG TELEMARK KOMMUNENUMMER MÅ BEGYNNE PÅ 38
       const regex = RegExp('^(38)([0-9]{2})$');
@@ -135,8 +136,21 @@ export default {
         }
       }
     },
-    isPostalCodeInSupportedArea (countyCode) {
-
+    updateAdress () {
+      const obj = {
+        billing: {
+          adress: this.billing_adress,
+          postalCode: this.billing_postalcode,
+          postalArea: this.billing_municipality
+        },
+        cottage: {
+          adress: this.cottage_adress,
+          postalCode: this.cottage_postalcode,
+          postalArea: this.cottage_municipality,
+          extraInfo: this.cottage_extra
+        }
+      };
+      this.$store.commit('cart/updateAdress', obj);
     }
   }
 
