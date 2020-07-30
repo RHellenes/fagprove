@@ -4,14 +4,23 @@
       Adresse
     </h1>
     <form class="four-fifths">
-      <div class="one-half flex-block ">
+      <div class="order-process_adress_one-half flex-block ">
         <label class="label one-whole mt-1">
           <span>Fakturaadresse</span>
           <input id="billing_adress" required type="text" name="billing_adress">
         </label>
         <label class="label form_one-third mt-1">
           <span>Postnr</span>
-          <input id="postnumber" v-model="billing_postalcode" required type="tel" name="postalcode">
+          <input
+            id="postnumber"
+            v-model="billing_postalcode"
+            minlength="4"
+            maxlength="4"
+            pattern="\d+"
+            required
+            type="tel"
+            name="postalcode"
+          >
         </label>
         <div class="label untouchable form_two-thirds mt-1">
           <span>Poststed</span>
@@ -26,7 +35,16 @@
         </label>
         <label class="label form_one-third mt-1">
           <span>Postnr</span>
-          <input id="cottage_postnumber" v-model="cottage_postalcode" required type="tel" name="cottage_postalcode">
+          <input
+            id="cottage_postnumber"
+            v-model="cottage_postalcode"
+            required
+            type="tel"
+            name="cottage_postalcode"
+            minlength="4"
+            maxlength="4"
+            pattern="\d+"
+          >
         </label>
         <div class="label untouchable form_two-thirds mt-1">
           <span>Poststed</span>
@@ -100,6 +118,7 @@ export default {
         }
       }
       const postalInfo = this._.find(this.postalcodes, { 'municipalityCode': code });
+      // VESTFOLD OG TELEMARK KOMMUNENUMMER MÅ BEGYNNE PÅ 38
       const regex = RegExp('^(38)([0-9]{2})$');
 
       if (postalInfo) {
@@ -133,6 +152,6 @@ export default {
     width: 33%;
 
   }
-
 }
+
 </style>

@@ -5,16 +5,16 @@
     </h1>
     <form class="four-fifths">
       <div class="one-whole flex-block ">
-        <label class="label one-half mt-105">
+        <label class="label order-process_adress_one-half mt-105">
           <span>Fornavn</span>
           <input id="firstname" required type="text" name="firstname">
         </label>
-        <label class="label one-half mt-105">
+        <label class="label order-process_adress_one-half mt-105">
           <span>Etternavn</span>
           <input id="surname" required type="text" name="surname">
         </label>
       </div>
-      <div class="one-half flex-block ">
+      <div class="order-process_adress_one-half flex-block ">
         <label class="label one-whole mt-105">
           <span>Email</span>
           <input id="email" required type="text" name="email">

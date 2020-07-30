@@ -186,3 +186,10 @@
     padding: 1em 2em;
   }
 }
+.order-process_adress_one-half {
+  width: 100%;
+  max-width: 25rem;
+  @media (min-width: 900px) {
+    width: 48%;
+  }
+}
