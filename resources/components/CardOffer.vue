@@ -16,7 +16,7 @@
         </ul>
       </div>
       <form v-if="isCtaActive" @submit.prevent="addPackage()" class="cta center-child one-whole mt-2">
-        <input :class="content.isHighlighted ? 'button--contrast mt-1' : 'button--primary ' " :value="`Velg ${content.title.toLowerCase()}`" type="submit" class="button button-compressed ">
+        <input :class="content.isHighlighted ? 'button--contrast mt-1 no-focus' : 'button--primary no-focus' " :value="`Velg ${content.title.toLowerCase()}`" type="submit" class="button button-compressed ">
       </form>
     </div>
   </div>
@@ -42,6 +42,7 @@ export default {
     addPackage () {
       this.$store.commit('cart/updatePackage', this.content);
       this.$store.commit('progress/increasePageNr');
+      this.$router.push('/');
       this.$router.push('/#adress');
     }
   }
@@ -49,6 +50,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+[data-whatinput="keyboard"] {
+  .offer{
+    & .container:focus-within{
+      border-radius: 1px;
+      box-shadow: 0px 0px 0px 3px var(--primary-dark), 0px 0px 0px 5px var(--off-white);
+    }
+  }
+}
+
 .offer {
 
   position: relative;

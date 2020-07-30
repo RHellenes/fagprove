@@ -1,11 +1,12 @@
 <template>
   <div
-    id="adress"
+
     :tabindex="!open && hasRegistred ? '0' : ''"
     @click="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
     @keydown.enter="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
     class="order-process container mt-2"
   >
+    <div id="adress" class="floater" />
     <h1 class="thin">
       Adresse
     </h1>
@@ -181,6 +182,8 @@ export default {
       };
       this.$store.commit('cart/updateAdress', obj);
       this.$store.commit('progress/increasePageNr');
+
+      this.$router.push('/#adress');
       this.$router.push('/#contact');
     }
 
@@ -198,6 +201,14 @@ export default {
     width: 33%;
 
   }
+}
+.order-process{
+  position: relative;
+}
+.floater{
+  position: absolute;
+  height: 1px;
+  top:-70px;
 }
 
 </style>

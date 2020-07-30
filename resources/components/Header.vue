@@ -61,17 +61,15 @@ header{
 
 .logo{
   display: block;
+  height:auto;
   width: 15%;
   min-width: 8em;
   max-width: 9em;
   align-self:center;
   position: relative;
   & img{
-    position: absolute;
-    top:50%;
-    transform: translateY(-40%);
+    transform: translateY(12.5%);
     width:100%;
-    display: inline-block;
   }
 }
 

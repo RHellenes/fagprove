@@ -37,7 +37,8 @@ module.exports = {
    */
   plugins: [
     '~/plugins/helpers',
-    '~/plugins/vue-lodash'
+    '~/plugins/vue-lodash',
+    '~/plugins/what-input'
   ],
 
   /*

@@ -20,7 +20,7 @@
           <p>{{ offers.cart.adress.data.billing.adress }}</p>
           <p>{{ offers.cart.adress.data.billing.postalCode }} {{ offers.cart.adress.data.billing.postalArea }}</p>
         </div>
-        <div class="one-whole mt-2">
+        <div class="one-whole mt-2 mb-3">
           <h3>Hytteadresse</h3>
           <p>{{ offers.cart.adress.data.cottage.adress }}</p>
           <p>{{ offers.cart.adress.data.cottage.postalCode }} {{ offers.cart.adress.data.cottage.postalArea }}</p>
@@ -33,15 +33,16 @@
           :content="offers.cart.package.data"
         />
       </div>
-      <div class="one-whole mt-3 mb-1 f-size-1-1">
+      <form @submit.prevent class="one-whole mt-3 mb-1 f-size-1-1">
         <label>
-          <input id="consent" type="checkbox" name="consent" value="Jeg samtykker til betingelsene til HytteNett">
+          <input id="consent" tabindex="0" type="checkbox" name="consent" value="Jeg samtykker til betingelsene til HytteNett">
           <span>Jeg har lest og <a href="#">samtykker til betingelsene</a> </span>
         </label>
-      </div>
-      <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
-        <input @click.prevent type="submit" value="Bestill" class="button button--contrast">
-      </div>
+
+        <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
+          <input type="submit" value="Bestill" class="button button--contrast">
+        </div>
+      </form>
     </div>
   </div>
 </template>

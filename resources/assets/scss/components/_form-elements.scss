@@ -23,6 +23,7 @@
     border-radius: 6px;
     border: 2px solid #fff;
     min-height: 2.3em;
+    position: relative;
   }
 
   & input[type="tel"],
@@ -32,10 +33,10 @@
 }
 
 input[type="checkbox"] {
-  opacity: 0;
+  opacity: 1;
   height: 1px;
   margin-bottom: -1px;
-  display: none;
+
   & + span {
     & a,
     & a:visited {
