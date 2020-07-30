@@ -1,6 +1,7 @@
 <template>
   <div
-    class="order-process container mt-2"
+    id="confirm"
+    class="order-process container mt-2 mb-6"
   >
     <h1 class="thin">
       Bekreft bestilling

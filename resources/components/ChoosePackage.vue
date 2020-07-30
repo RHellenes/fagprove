@@ -1,5 +1,6 @@
 <template>
   <div
+    id="package"
     :tabindex="!open && hasRegistred ? '0' : ''"
     @click="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
     @keydown.enter="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
@@ -8,7 +9,7 @@
     <h1 class="center thin">
       Velg pakke
     </h1>
-    <span v-if="!open" class="center">{{ chosenPackage }}</span>
+    <span v-if="!open" class="center">{{ chosenPackage }}pakken</span>
     <div v-if="open" class="mt-3 choose-package_container">
       <div
         :key="index"

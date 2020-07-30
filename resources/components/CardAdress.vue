@@ -1,5 +1,6 @@
 <template>
   <div
+    id="adress"
     :tabindex="!open && hasRegistred ? '0' : ''"
     @click="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
     @keydown.enter="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
@@ -8,7 +9,7 @@
     <h1 class="thin">
       Adresse
     </h1>
-    <span v-if="!open" class="center">{{ `${registredAdress.cottage.adress}, ${registredAdress.cottage.postalCode} ${registredAdress.cottage.postalArea}` }} </span>
+    <span v-if="!open && registredAdress.cottage.adress" class="center">{{ `${registredAdress.cottage.adress}, ${registredAdress.cottage.postalCode} ${registredAdress.cottage.postalArea}` }} </span>
     <form @submit.prevent="updateAdress()" v-if="open" class="four-fifths">
       <div class="order-process_adress_one-half flex-block ">
         <label class="label one-whole mt-1">
@@ -180,6 +181,7 @@ export default {
       };
       this.$store.commit('cart/updateAdress', obj);
       this.$store.commit('progress/increasePageNr');
+      this.$router.push('/#contact');
     }
 
   }

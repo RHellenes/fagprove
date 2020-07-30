@@ -42,6 +42,7 @@ export default {
     addPackage () {
       this.$store.commit('cart/updatePackage', this.content);
       this.$store.commit('progress/increasePageNr');
+      this.$router.push('/#adress');
     }
   }
 };

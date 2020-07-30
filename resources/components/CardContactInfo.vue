@@ -1,5 +1,6 @@
 <template>
   <div
+    id="contact"
     :tabindex="!open && hasRegistred ? '0' : ''"
     v-on:click="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
     v-on:keydown.enter="!open && hasRegistred ? setPageNrIfNotOpen() : ''"
