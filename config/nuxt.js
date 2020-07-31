@@ -39,7 +39,8 @@ module.exports = {
   plugins: [
     '~/plugins/helpers',
     '~/plugins/vue-lodash',
-    '~/plugins/what-input'
+    { src: '~/plugins/what-input', mode: 'client' },
+    { src: '~plugins/ga.js', mode: 'client' }
   ],
 
   /*
