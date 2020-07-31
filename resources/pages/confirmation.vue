@@ -53,6 +53,9 @@ export default {
 <style lang="scss" scoped>
 #confirmation{
   min-height:65vh;
+  align-items:center;
+  width: 90%;
+  max-width: 900px;
   & *{
     max-width: 600px;
     text-align: center;
