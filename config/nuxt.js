@@ -15,9 +15,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', id: 'favicon', href: process.env.NODE_ENV !== 'development' ? '/favicon/favicon-xl.png' : '/LH-favicon-xl.png' },
-      { rel: 'icon', type: 'image/x-icon', id: 'favicon', href: process.env.NODE_ENV !== 'development' ? '/favicon/favicon.svg' : '/LH-favicon-xl.png' },
-      // { rel: 'icon', type: 'image/x-icon', href: '/apple-touch-icon.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' }
+      { rel: 'icon', type: 'image/x-icon', id: 'favicon', href: process.env.NODE_ENV !== 'development' ? '/favicon/favicon.svg' : '/LH-favicon-xl.png' }
     ]
   },
   /*
