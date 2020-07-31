@@ -5,6 +5,8 @@
   border-radius: 6px;
   text-decoration: none;
   border: 0px;
+  cursor: pointer;
+
   &--disabled,
   &:disabled {
     opacity: 0.75;

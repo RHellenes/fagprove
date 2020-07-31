@@ -33,14 +33,21 @@
           :content="offers.cart.package.data"
         />
       </div>
-      <form @submit.prevent class="one-whole mt-3 mb-1 f-size-1-1">
+      <form @submit.prevent="sendToConfirmation()" class="one-whole mt-3 mb-1 f-size-1-1">
         <label>
-          <input id="consent" tabindex="0" type="checkbox" name="consent" value="Jeg samtykker til betingelsene til HytteNett">
+          <input
+            id="consent"
+            v-model="consent"
+            tabindex="0"
+            type="checkbox"
+            name="consent"
+            value="Jeg samtykker til betingelsene til HytteNett"
+          >
           <span>Jeg har lest og <a href="#">samtykker til betingelsene</a> </span>
         </label>
 
         <div class="one-whole center-child mt-3 mb-1 f-size-1-1">
-          <input type="submit" value="Bestill" class="button button--contrast">
+          <input :disabled="!consent" type="submit" value="Bestill" class="button button--contrast">
         </div>
       </form>
     </div>
@@ -64,11 +71,21 @@ export default {
       type: Number
     }
   },
+  data () {
+    return {
+      consent: false
+    };
+  },
   computed: {
     offers () {
       return this.$store.state.cart;
     }
 
+  },
+  methods: {
+    sendToConfirmation () {
+      this.$router.push('/confirmation');
+    }
   }
 
 };

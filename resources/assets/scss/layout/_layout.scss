@@ -185,6 +185,11 @@
   @media (min-width: 900px) {
     padding: 1em 2em;
   }
+  @media (max-width: 360px) {
+    h1 {
+      font-size: 1.7em;
+    }
+  }
 }
 .order-process_adress_one-half {
   width: 100%;

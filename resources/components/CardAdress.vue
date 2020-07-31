@@ -46,13 +46,15 @@
           <input
             id="cottage_postnumber"
             v-model="cottage_postalcode"
+            :class="isCottagePostalCodeOk === '0' ? 'error' : ''"
             required
             type="tel"
             name="cottage_postalcode"
             minlength="4"
             maxlength="4"
             pattern="\d+"
-          ></inputd></label>
+          >
+        </label>
         <div class="label untouchable form_two-thirds mt-1">
           <span>Poststed</span>
           <div :class="isCottagePostalCodeOk === '0' ? 'red_border' : ''" class="untouchable">
