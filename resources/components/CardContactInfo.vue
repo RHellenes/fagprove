@@ -141,6 +141,9 @@ export default {
       if (this.isFormOk()) {
         this.$store.commit('cart/updateContact', this.contactInfo);
         this.$store.commit('progress/increasePageNr');
+
+        this.$router.push('/#contact');
+        this.$router.push('/#confirm');
       } else {
         this.hasTriedAndFailed = true;
       }

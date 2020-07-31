@@ -1,8 +1,9 @@
 <template>
   <div
-    id="confirm"
+
     class="order-process container mt-2 mb-6"
   >
+    <div id="confirm" class="floater" />
     <h1 class="thin">
       Bekreft bestilling
     </h1>
