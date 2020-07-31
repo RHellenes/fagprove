@@ -14,11 +14,11 @@
     <form @submit.prevent="updateAdress()" v-if="open" class="four-fifths">
       <div class="order-process_adress_one-half flex-block ">
         <label class="label one-whole mt-1">
-          <span>Fakturaadresse</span>
+          <span>Fakturaadresse*</span>
           <input id="billing_adress" v-model="billing_adress" required type="text" name="billing_adress">
         </label>
         <label class="label form_one-third mt-1">
-          <span>Postnr</span>
+          <span>Postnr*</span>
           <input
             id="postnumber"
             v-model="billing_postalcode"
@@ -38,11 +38,11 @@
         </div>
 
         <label class="label one-whole mt-4">
-          <span>Adressa til hytta</span>
+          <span>Adressa til hytta*</span>
           <input id="cottage_adress" v-model="cottage_adress" required type="text" name="cottage_adress">
         </label>
         <label class="label form_one-third mt-1">
-          <span>Postnr</span>
+          <span>Postnr*</span>
           <input
             id="cottage_postnumber"
             v-model="cottage_postalcode"
@@ -52,8 +52,7 @@
             minlength="4"
             maxlength="4"
             pattern="\d+"
-          >
-        </label>
+          ></inputd></label>
         <div class="label untouchable form_two-thirds mt-1">
           <span>Poststed</span>
           <div :class="isCottagePostalCodeOk === '0' ? 'red_border' : ''" class="untouchable">
